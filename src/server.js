@@ -5,6 +5,7 @@ import store from 'session-file-store';
 import apiUserRoutes from './routes/apiUserRoute';
 import jsxRender from './utils/jsxRender'
 import path from 'path';
+import renderRoutes from './routes/renderRouter';
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
@@ -31,12 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
-
+app.use('/', renderRoutes)
 app.use('/user', apiUserRoutes);
-
-app.get('/', (req, res) => {
-    const initState = { hello: 'world' };
-    res.render('Layout', initState);
-  });
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
