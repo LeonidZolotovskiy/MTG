@@ -1,16 +1,24 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../../db/models';
+import mailer from '../nodemailer';
 
 const apiUserRoutes = express.Router();
 
-apiUserRoutes.post('/signup', async (req, res) => { 
+apiUserRoutes.post('/signup', async (req, res) => {
   try {
     const {
       email, password, name, city,
     } = req.body;
+
+    const message = {
+      to: email,
+      subject: 'Welcome to the Covid-19 Tracker',
+      text: `Welcome to the Covid-19 Tracker, ${name}!`,
+    };
+    mailer(message);
     const hashPass = await bcrypt.hash(password, 10);
-    const [user, create] = await User.findOrCreate({ 
+    const [user, create] = await User.findOrCreate({
       where: { email },
       defaults: {
         password: hashPass,
@@ -29,7 +37,7 @@ apiUserRoutes.post('/signup', async (req, res) => {
 apiUserRoutes.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const foundUser = await User.findOne({ 
+    const foundUser = await User.findOne({
       where: { email },
     });
     if (!(foundUser && await bcrypt.compare(password, foundUser.password))) {
