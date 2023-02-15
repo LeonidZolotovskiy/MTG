@@ -7,6 +7,7 @@ import apiUserRoutes from './routes/apiUserRoute';
 import indexRouter from './routes/indexRouter';
 import jsxRender from './utils/jsxRender';
 import renderRoutes from './routes/renderRouter';
+import apiCard from './routes/apiCard';
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
@@ -37,5 +38,6 @@ app.use(session(sessionConfig));
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);
 app.use('/addcard', indexRouter);
+app.use('/api', apiCard);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
