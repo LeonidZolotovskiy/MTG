@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import SignIn from './registration/SingIn';
 import SignUp from './registration/SingUp';
 import PrivateCabinet from './PrivateCabinet';
+import OneCard from './card/OneCard';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/addcard" element={<AddCard />} />
+        <Route path="/card" element={<OneCard />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
