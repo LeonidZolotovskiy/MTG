@@ -1,7 +1,12 @@
 import React from 'react';
+import SignIn from './registration/SingIn';
+import SignUp from './registration/SingUp';
 
 export default function App() {
   return (
-    <div>App</div>
+    <div>
+      <SignIn />
+      <SignUp />
+    </div>
   );
 }
