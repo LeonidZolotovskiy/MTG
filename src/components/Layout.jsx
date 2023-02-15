@@ -31,6 +31,7 @@ export default function Layout({ initState }) {
         <script defer src="/app.js" />
         <script defer src="/vendor.js" />
         <link href="/css/addCard.css" rel="stylesheet" media="all" />
+        <link href="/css/oneCard.css" rel="stylesheet" media="all" />
         <title>Document</title>
       </head>
       <body>

@@ -1,31 +1,75 @@
 import React from 'react';
+import axios from 'axios';
 
 export default function AddCard() {
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(e.target));
+    console.log(data);
+    if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
+      axios.post('/api/', data)
+        .then((res) => console.log(res));
+      e.target.reset();
+    }
+  };
   return (
     <div className="container">
-      <form id="contact" action="" method="post">
+      <form onSubmit={submitHandler} id="contact">
         <h3>Add your card</h3>
-        {/* <h4>Contact us today, and get reply with in 24 hours!</h4> */}
         <fieldset>
-          <input placeholder="Card's name" type="text" tabIndex="1" required autoFocus />
+          <input
+            placeholder="Card's name"
+            type="text"
+            name="name"
+            tabIndex="1"
+            required
+            autoFocus
+          />
         </fieldset>
         <div className="input-group">
-          <input placeholder="Add price" type="text" className="form-control" aria-label="Dollar amount (with dot and two decimal places)" />
+          <input
+            placeholder="Add price"
+            type="text"
+            name="price"
+            className="form-control"
+            aria-label="Dollar amount (with dot and two decimal places)"
+          />
         </div>
         <fieldset>
-          <input placeholder="Add URL img" type="url" tabIndex="1" required autoFocus />
+          <input
+            placeholder="Add URL img"
+            type="url"
+            name="img"
+            tabIndex="1"
+            required
+            autoFocus
+          />
         </fieldset>
         <fieldset>
-          <div className="input-group mb-3">
-            <input type="text" className="form-control" aria-label="Text input with dropdown button" />
-            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              <li><a className="dropdown-item" href="#">Good</a></li>
-              <li><a className="dropdown-item" href="#">Average action</a></li>
-              <li><a className="dropdown-item" href="#">Bed</a></li>
-            </ul>
+          <div className="input-group">
+            <input
+              placeholder="Add price"
+              type="text"
+              name="condition"
+              className="form-control"
+              aria-label="Dollar amount (with dot and two decimal places)"
+            />
           </div>
+
         </fieldset>
+        {/* <fieldset>
+          <select
+            className="form-select"
+            name="condition"
+            aria-label="Default select example"
+          >
+            <option selected>Condition</option>
+            <option value="1">Good</option>
+            <option value="2">Average</option>
+            <option value="3">Bad</option>
+          </select>
+        </fieldset> */}
         <fieldset>
           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
         </fieldset>
