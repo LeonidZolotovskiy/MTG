@@ -1,5 +1,6 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import AddCard from './card/AddCard';
 import AllCards from './AllCards';
 import Cart from './Cart';
 import Home from './Home';
@@ -13,6 +14,7 @@ export default function App() {
     <div>
       <NavBar />
       <Routes>
+        <Route path="/addcard" element={<AddCard />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
