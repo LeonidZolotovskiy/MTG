@@ -4,6 +4,7 @@ import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
 import apiUserRoutes from './routes/apiUserRoute';
+import indexRouter from './routes/indexRouter';
 import jsxRender from './utils/jsxRender';
 import renderRoutes from './routes/renderRouter';
 
@@ -35,5 +36,6 @@ app.use(session(sessionConfig));
 
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);
+app.use('/addcard', indexRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
