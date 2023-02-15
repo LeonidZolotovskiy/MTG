@@ -18,6 +18,11 @@ renderRoutes.get('/allCards', (req, res) => {
   res.render('Layout');
 });
 
+renderRoutes.get('/card', (req, res) => {
+
+  res.render('Layout');
+});
+
 renderRoutes.get('/cart', (req, res) => {
   res.render('Layout');
 });
