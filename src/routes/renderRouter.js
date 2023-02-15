@@ -16,4 +16,9 @@ renderRoutes.get('/', (req, res) => {
     res.render('Layout');
   });
 
+  renderRoutes.get('/allCards', (req, res) => {
+    res.render('Layout');
+  });
+
+
 export default renderRoutes;

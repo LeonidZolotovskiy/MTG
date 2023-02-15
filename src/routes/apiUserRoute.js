@@ -7,13 +7,14 @@ const apiUserRoutes = express.Router();
 
 apiUserRoutes.post('/signup', async (req, res) => { // ручка на беке
   try {
-    const { email, password, name } = req.body;// достаем из рег боди значения имя                                             
+    const { email, password, name, city } = req.body;// достаем из рег боди значения имя                                             
     const hashPass = await bcrypt.hash(password, 10);// хэшеривание пароля
     const [user, create] = await User.findOrCreate({// создаем или нахлдим узера
       where: { email },
       defaults: {
         password: hashPass,
         name,
+        city
       },
     });
     req.session.user = user;// передаем в рег сессию усера
