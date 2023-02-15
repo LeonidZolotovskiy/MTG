@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import apiUserRoutes from './routes/apiUserRoute';
+import indexRouter from './routes/indexRouter';
 import jsxRender from './utils/jsxRender'
 import path from 'path';
 
@@ -33,6 +34,7 @@ app.use(session(sessionConfig));
 
 
 app.use('/user', apiUserRoutes);
+app.use('/addcard', indexRouter);
 
 app.get('/', (req, res) => {
     const initState = { hello: 'world' };
