@@ -20,5 +20,11 @@ renderRoutes.get('/', (req, res) => {
     res.render('Layout');
   });
 
+  renderRoutes.get('/cart', (req, res) => {
+    res.render('Layout');
+  });
+  renderRoutes.get('/private', (req, res) => {
+    res.render('Layout');
+  });
 
 export default renderRoutes;
