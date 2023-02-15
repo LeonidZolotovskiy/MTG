@@ -2,6 +2,7 @@ public/app.js
 public/vendor.js
 sessions/
 .env
+package-lock.json
 # Logs
 logs
 *.log
