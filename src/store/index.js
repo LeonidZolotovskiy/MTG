@@ -7,7 +7,11 @@ const useAppStore = create((set, get) => ({
   user: isWindow() ? window.initState.user : undefined,
   cards: isWindow() ? window.initState.cards : [],
   card: isWindow() ? window.initState.card : null,
+<<<<<<< HEAD
   allItems: isWindow() ? window.initState.allItems : [],
+=======
+  oneCard: isWindow() ? window.initState.card : null,
+>>>>>>> dev
 
   setCards: (cards) => set({ cards }),
   setCard: (card) => set({ card }),
@@ -20,6 +24,10 @@ const useAppStore = create((set, get) => ({
       }
     });
   },
+<<<<<<< HEAD
+=======
+  
+>>>>>>> dev
 }));
 
 export default useAppStore;

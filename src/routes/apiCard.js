@@ -1,5 +1,5 @@
 import express from 'express';
-import { Card } from '../../db/models';
+import { Card, Basket } from '../../db/models';
 
 const apiCard = express.Router();
 
@@ -19,6 +19,17 @@ apiCard.route('/')
         owner_id: 1,
       });
 
+      return res.sendStatus(200);
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(500);
+    }
+  });
+
+apiCard.route('/cart/:id')
+  .post(async (req, res) => {
+    try {
+      await Basket.create({ u_id: res.locals.user.id, c_id: req.params.id });
       return res.sendStatus(200);
     } catch (err) {
       console.log(err);
