@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function OneCard({ card }) {
   return (
-    <div className="col-3 mt-1">
-      <div className="card">
+    <div className="col-4 mt-1">
+      <div className="card" style={{ display: 'flex', flexDirection: 'row' }}>
         <div className="col-md-4">
           <img src={card.img} className="img-fluid rounded-start" alt={card.name} />
         </div>
@@ -25,6 +25,7 @@ export default function OneCard({ card }) {
                 {' '}
               </small>
             </p>
+            <a href="/cart"><button className="btn btn-success" type="button">Купить</button></a>
           </div>
         </div>
       </div>

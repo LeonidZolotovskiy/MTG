@@ -9,13 +9,12 @@ const useAppStore = create((set, get) => ({
   card: isWindow() ? window.initState.card : null,
 
   setCards: (cards) => set({ cards }),
-
   setCard: (card) => set({ card }),
 
   deleteCards: async (id) => {
     set({ cards: get().cards.filter((el) => el.id !== id) });
   },
-
+  
 }));
 
 export default useAppStore;

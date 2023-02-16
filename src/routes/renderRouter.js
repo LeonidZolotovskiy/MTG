@@ -10,6 +10,9 @@ renderRoutes.get('/', (req, res) => {
 renderRoutes.get('/signin', (req, res) => {
   res.render('Layout');
 });
+renderRoutes.get('/addcard', (req, res) => {
+  res.render('Layout');
+});
 
 renderRoutes.get('/signup', (req, res) => {
   res.render('Layout');
