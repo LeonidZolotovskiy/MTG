@@ -1,18 +1,11 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+
 import OneCartItem from "./OneCartItem";
+import AppStore from "../../store";
 
-export default function Basket({ allItems }) {
-  const [cards, setcards] = useState(allItems || []);
-
-  const deleteHandler = (id) => {
-    axios.delete(`/api/cart/${id}`).then((res) => {
-      if (res.status === 200) {
-        setcards((prev) => prev.filter((el) => el.id !== id));
-      }
-    });
-  };
-
+export default function Basket() {
+  const allItems = AppStore((state) => state.allItems);
+  const deleteHandler = AppStore((state) => state.deleteItems);
   return (
     <div
       className="shopping-cart"
@@ -41,8 +34,8 @@ export default function Basket({ allItems }) {
           <h4 className="card-header">Header</h4>
 
           {/* Добавляем карточку oneCardменяем на свой элемент */}
-          {cards.map((el) => (
-            <OneCartItem card={el} deleteHandler={deleteHandler} key={el.id}/>
+          {allItems.map((el) => (
+            <OneCartItem card={el} deleteHandler={deleteHandler} key={el.id} />
           ))}
         </div>
         {/* button buy */}
