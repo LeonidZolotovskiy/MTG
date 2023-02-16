@@ -73,18 +73,6 @@ export default function AddCard() {
           </select>
 
         </fieldset>
-        {/* <fieldset>
-          <select
-            className="form-select"
-            name="condition"
-            aria-label="Default select example"
-          >
-            <option selected>Condition</option>
-            <option value="1">Good</option>
-            <option value="2">Average</option>
-            <option value="3">Bad</option>
-          </select>
-        </fieldset> */}
         <fieldset>
           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
         </fieldset>
