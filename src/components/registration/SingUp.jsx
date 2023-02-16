@@ -6,15 +6,15 @@ export default function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
-    const { email, password, name, city } = formData;
+    const { password, name } = formData;
     if (!(password && name)) {
       return setError({ message: 'Password and username must be non-empty' });
+      console.log(err);
     }
     axios.post('/user/signup', formData)
       .then(() => { window.location = '/'; })
       .catch((error) => {
         console.log(error);
-        setError();
       });
   };
   return (
@@ -23,15 +23,16 @@ export default function SignUp() {
         <div className="col-10 col-md-8 col-lg-6">
           <form className="signup-form" action="" method="post" onSubmit={submitHandler}>
             <div className="form-group mt-5">
-              <input type="text" name="name" className="form-control" placeholder="имя..." required />
+              <input type="text" name="name" className="form-control" placeholder="Имя..." required />
             </div>
             <div className="form-group mt-5">
-              <input 
-              type="email"
-               name="email" 
-               className="form-control" 
-               placeholder="email..."
-                required />
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="email..."
+                required
+              />
             </div>
             <div className="form-group mt-5">
               <input
@@ -47,7 +48,7 @@ export default function SignUp() {
                 type="city"
                 name="city"
                 className="form-control"
-                placeholder="город..."
+                placeholder="город ..."
                 required
               />
             </div>

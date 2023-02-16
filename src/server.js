@@ -6,6 +6,7 @@ import path from 'path';
 import apiUserRoutes from './routes/apiUserRoute';
 import jsxRender from './utils/jsxRender';
 import renderRoutes from './routes/renderRouter';
+import apiCard from './routes/apiCard';
 import cartRoute from './routes/cartRoute'
 
 const PORT = process.env.SERVER_PORT || 3000;
@@ -34,8 +35,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
 
+app.use((req, res, next) => {
+  res.locals.path = req.originalUrl;
+  next();
+});
+
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);
+app.use('/api', apiCard);
 app.use('/api/cart', cartRoute)
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
