@@ -19,8 +19,11 @@ renderRoutes.get('/allCards', (req, res) => {
 });
 
 renderRoutes.get('/card', (req, res) => {
-
-  res.render('Layout');
+  const card = {
+    name: 'Mountain', img: 'https://m.media-amazon.com/images/I/41uQsn5uK0L._AC_.jpg', price: '555', condition: 'Good',
+  };
+  const initState = { card };
+  res.render('Layout', initState);
 });
 
 renderRoutes.get('/cart', (req, res) => {
