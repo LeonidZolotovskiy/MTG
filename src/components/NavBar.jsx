@@ -1,65 +1,65 @@
 import React from 'react';
+import useAppStore from '../store';
 
 export default function NavBar() {
-  const user = { name: 'Jane Doe' };
+  const user = useAppStore((state) => state.user);
+  console.log(user);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/private">
-          Личный кабинет
-          {' '}
-          {user.name}
-          {' '}
-        </a>
+        <a className="navbar-brand" href="/">Home</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
+            { user ? (
+              <>
 
-            <li className="nav-item dropdown">
-              <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Auth
-              </div>
-              <ul className="dropdown-menu">
                 <li className="nav-item">
-                  <a className="nav-link" href="/signin">SignIn</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/signup">SingUp</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/user/logout">LogOut</a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/allCards">Cards</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/cart">Корзина</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Фильр по городу
-              </a>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            {/* <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> */}
 
+                  <span className="nav-link">
+                    Здравствуйте!
+                    {' '}
+                    {' '}
+                    {user?.name}
+                    {' '}
+                    {' '}
+
+                  </span>
+
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/user/logout">Logout</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/cart">Cart</a>
+                </li>
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="/">Action</a></li>
+                    <li><a className="dropdown-item" href="/">Another action</a></li>
+                    <li><a className="dropdown-item" href="/">Something else here</a></li>
+                  </ul>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a className="nav-link active" aria-current="page" href="/signup">SingUp</a>
+                </li>
+                <li className="nav-item" />
+                <li className="nav-item">
+                  <a className="nav-link" href="/signin">SingIn</a>
+                </li>
+              </>
+            )}
           </ul>
-
           <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Поиск по названию" aria-label="Search" />
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>

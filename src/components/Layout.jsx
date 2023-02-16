@@ -4,9 +4,10 @@ import useAppStore from '../store';
 import App from './App';
 
 export default function Layout({ initState }) {
-  const { setCard, setCards } = useAppStore();
+  const { setCard, setCards, setUser } = useAppStore();
   setCard(initState.card);
   setCards(initState.cards);
+  setUser(initState.user);
   return (
     <html lang="en">
       <head>
