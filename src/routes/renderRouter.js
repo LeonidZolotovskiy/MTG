@@ -1,5 +1,5 @@
 import express from "express";
-import { Card, Basket, User, User, Basket } from "../../db/models";
+import { Card, Basket, User } from "../../db/models";
 
 const renderRoutes = express.Router();
 
