@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddCard from './card/AddCard';
 import AllCards from './AllCards';
-import Cart from './Cart';
+import Cart from './basket/Cart';
 import Home from './Home';
 import NavBar from './NavBar';
 import SignIn from './registration/SingIn';
