@@ -1,12 +1,15 @@
-import React from "react";
-import { StaticRouter } from "react-router-dom/server";
-import useAppStore from "../store";
-import App from "./App";
+import React from 'react';
+import { StaticRouter } from 'react-router-dom/server';
+import useAppStore from '../store';
+import App from './App';
 
 export default function Layout({ initState }) {
-  const { setCard, setCards, setAllItems } = useAppStore();
+  const {
+    setCard, setCards, setAllItems, setUser,
+  } = useAppStore();
   setCard(initState.card);
   setCards(initState.cards);
+  setUser(initState.user);
   setAllItems(initState.allItems);
   return (
     <html lang="en">
