@@ -1,5 +1,5 @@
 import express from 'express';
-import { Card } from '../../db/models';
+import { Card, User, Basket } from '../../db/models';
 
 const renderRoutes = express.Router();
 
@@ -16,15 +16,24 @@ renderRoutes.get('/signup', (req, res) => {
 });
 
 renderRoutes.get('/allCards', async (req, res) => {
-  const cards = await Card.findAll();
+  const rowcards = await Card.findAll();
+  const rowbasketCards = await Basket.findAll(
+    {
+      where: { u_id: req.session.user.id },
+    },
+  );
+  const cards = JSON.parse(JSON.stringify(rowcards));
+  const basketCards = JSON.parse(JSON.stringify(rowbasketCards));
+  cards.forEach((card) => {
+    card.inBasket = basketCards.some((el) => el.c_id === card.id);
+  });
+  console.log(cards);
   res.render('Layout', { cards });
 });
 
-renderRoutes.get('/card', (req, res) => {
-  const card = {
-    name: 'Mountain', img: 'https://m.media-amazon.com/images/I/41uQsn5uK0L._AC_.jpg', price: '555', condition: 'Good',
-  };
-  const initState = { card };
+renderRoutes.get('/allCards/:id', async (req, res) => {
+  const oneCard = await Card.findOne({ where: { id: req.params.id }, include: User });
+  const initState = { oneCard };
   res.render('Layout', initState);
 });
 

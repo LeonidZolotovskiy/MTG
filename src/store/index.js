@@ -7,6 +7,7 @@ const useAppStore = create((set, get) => ({
   user: isWindow() ? window.initState.user : undefined,
   cards: isWindow() ? window.initState.cards : [],
   card: isWindow() ? window.initState.card : null,
+  oneCard: isWindow() ? window.initState.card : null,
 
   setCards: (cards) => set({ cards }),
 
