@@ -9,8 +9,20 @@ export default function AddCard() {
     console.log(data);
     if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
       axios.post('/api/', data)
-        .then((res) => console.log(res));
-      e.target.reset();
+        .then((res) => {
+          setCurrentPosts((prev) => [...prev,
+            {
+              id: res.data.id,
+              name: data.name,
+              img: data.img,
+              user_id: res.data.user_id,
+              price: data.price,
+              condition: data.condition,
+              status: data.status,
+            },
+          ]);
+          e.target.reset();
+        });
     }
   };
   return (
