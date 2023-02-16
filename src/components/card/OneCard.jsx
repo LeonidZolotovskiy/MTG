@@ -1,12 +1,9 @@
 import React from 'react';
-import AppStore from '../../store';
 
-export default function OneCard() {
-  const card = AppStore((state) => state.card);
-  console.log(card);
+export default function OneCard({ card }) {
   return (
-    <div className="card col-3 mt-1">
-      <div className="row g-0">
+    <div className="col-3 mt-1">
+      <div className="card">
         <div className="col-md-4">
           <img src={card.img} className="img-fluid rounded-start" alt={card.name} />
         </div>
