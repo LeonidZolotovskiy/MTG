@@ -1,4 +1,5 @@
 import express from 'express';
+import { Card } from '../../db/models';
 
 const renderRoutes = express.Router();
 
@@ -14,8 +15,9 @@ renderRoutes.get('/signup', (req, res) => {
   res.render('Layout');
 });
 
-renderRoutes.get('/allCards', (req, res) => {
-  res.render('Layout');
+renderRoutes.get('/allCards', async (req, res) => {
+  const cards = await Card.findAll();
+  res.render('Layout', { cards });
 });
 
 renderRoutes.get('/card', (req, res) => {
