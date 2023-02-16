@@ -1,10 +1,9 @@
 import React from 'react';
-
-const card = {
-  name: 'Mountain', img: 'https://m.media-amazon.com/images/I/41uQsn5uK0L._AC_.jpg', price: '555', condition: 'Good',
-};
+import AppStore from '../../store';
 
 export default function OneCard() {
+  const card = AppStore((state) => state.card);
+console.log(card);
   return (
     <div className="card col-3 mt-1">
       <div className="row g-0">
