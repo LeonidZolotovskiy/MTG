@@ -6,6 +6,7 @@ import path from 'path';
 import apiUserRoutes from './routes/apiUserRoute';
 import jsxRender from './utils/jsxRender';
 import renderRoutes from './routes/renderRouter';
+import cartRoute from './routes/cartRoute'
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
@@ -35,5 +36,6 @@ app.use(session(sessionConfig));
 
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);
+app.use('/api/cart', cartRoute)
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
