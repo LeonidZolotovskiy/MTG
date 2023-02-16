@@ -32,10 +32,14 @@ renderRoutes.get("/card", (req, res) => {
 });
 
 renderRoutes.get("/cart", async (req, res) => {
-  const allItems = await Basket.findAll({
+  const findItems = await Basket.findAll({
     where: { u_id: req.session.user.id },
-    include: [{ model: User }, { model: Card }],
+    include: {
+      model: Card,
+      include: { model: User },
+    },
   });
+  const allItems = JSON.parse(JSON.stringify(findItems))
   res.render("Layout", { allItems });
 });
 
