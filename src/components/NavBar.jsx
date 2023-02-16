@@ -55,13 +55,8 @@ export default function NavBar() {
             {/* <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li> */}
-
           </ul>
 
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Поиск по названию" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </nav>
