@@ -38,6 +38,10 @@ app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
   next();
 });
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
 
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);

@@ -9,8 +9,20 @@ export default function AddCard() {
     console.log(data);
     if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
       axios.post('/api/', data)
-        .then((res) => console.log(res));
-      e.target.reset();
+        .then((res) => {
+          setCurrentPosts((prev) => [...prev,
+            {
+              id: res.data.id,
+              name: data.name,
+              img: data.img,
+              user_id: res.data.user_id,
+              price: data.price,
+              condition: data.condition,
+              status: data.status,
+            },
+          ]);
+          e.target.reset();
+        });
     }
   };
   return (
@@ -18,14 +30,15 @@ export default function AddCard() {
       <form onSubmit={submitHandler} id="contact">
         <h3>Add your card</h3>
         <fieldset>
-          <input
-            placeholder="Card's name"
-            type="text"
-            name="name"
-            tabIndex="1"
-            required
-            autoFocus
-          />
+          <div className="input-group">
+            <input
+              placeholder="Card's name"
+              type="text"
+              name="name"
+              className="form-control"
+              aria-label="Dollar amount (with dot and two decimal places)"
+            />
+          </div>
         </fieldset>
         <div className="input-group">
           <input
@@ -37,39 +50,29 @@ export default function AddCard() {
           />
         </div>
         <fieldset>
-          <input
-            placeholder="Add URL img"
-            type="url"
-            name="img"
-            tabIndex="1"
-            required
-            autoFocus
-          />
-        </fieldset>
-        <fieldset>
           <div className="input-group">
             <input
-              placeholder="Add price"
+              placeholder="Add URL img"
               type="text"
-              name="condition"
+              name="img"
               className="form-control"
               aria-label="Dollar amount (with dot and two decimal places)"
             />
           </div>
-
         </fieldset>
-        {/* <fieldset>
+        <fieldset>
           <select
             className="form-select"
             name="condition"
             aria-label="Default select example"
           >
             <option selected>Condition</option>
-            <option value="1">Good</option>
-            <option value="2">Average</option>
-            <option value="3">Bad</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Bad">Bad</option>
           </select>
-        </fieldset> */}
+
+        </fieldset>
         <fieldset>
           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
         </fieldset>

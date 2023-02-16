@@ -19,7 +19,7 @@ export default function AllCards() {
   return (
     <>
       <Search search={search} handlerFilter={handlerFilter} setSearch={setSearch} />
-      <div className="row mt-5">
+      <div className="row mt-2">
         {allCards.map((card) => <OneCard key={card.id} card={card} />)}
       </div>
     </>
