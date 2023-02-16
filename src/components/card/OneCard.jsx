@@ -1,24 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import AppStore from '../../store';
 
-// const card = {
-//   name: 'Mountain', img: 'https://m.media-amazon.com/images/I/41uQsn5uK0L._AC_.jpg', price: '555', condition: 'Good',
-// };
-
-export default function OneCard({ card, currentUser }) {
-  const [change, setChange] = useState(false);
-
-  const [cardState, setCardState] = useState({
-    name: card.name,
-    img: card.img,
-    price: card.price,
-    condition: card.condition,
-    status: card.status,
-  });
-
-  const changeHandler = (e) => {
-    setCardState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
+export default function OneCard() {
+  const card = AppStore((state) => state.card);
+console.log(card);
   return (
 
     <div className="col-md-4">

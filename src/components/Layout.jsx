@@ -1,8 +1,12 @@
 import React from 'react';
 import { StaticRouter } from 'react-router-dom/server';
+import useAppStore from '../store';
 import App from './App';
 
 export default function Layout({ initState }) {
+  const { setCard, setCards } = useAppStore();
+  setCard(initState.card);
+  setCards(initState.cards);
   return (
     <html lang="en">
       <head>
