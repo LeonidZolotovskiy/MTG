@@ -1,10 +1,10 @@
-import express from 'express';
-import { Card, User, Basket } from '../../db/models';
+import express from "express";
+import { Card, Basket, User, User, Basket } from "../../db/models";
 
 const renderRoutes = express.Router();
 
-renderRoutes.get('/', (req, res) => {
-  res.render('Layout');
+renderRoutes.get("/", (req, res) => {
+  res.render("Layout");
 });
 
 renderRoutes.get('/signin', (req, res) => {
@@ -14,8 +14,8 @@ renderRoutes.get('/addcard', (req, res) => {
   res.render('Layout');
 });
 
-renderRoutes.get('/signup', (req, res) => {
-  res.render('Layout');
+renderRoutes.get("/signup", (req, res) => {
+  res.render("Layout");
 });
 
 renderRoutes.get('/allCards', async (req, res) => {
@@ -40,11 +40,20 @@ renderRoutes.get('/allCards/:id', async (req, res) => {
   res.render('Layout', initState);
 });
 
-renderRoutes.get('/cart', (req, res) => {
-  res.render('Layout');
+renderRoutes.get("/cart", async (req, res) => {
+  const findItems = await Basket.findAll({
+    where: { u_id: req.session.user.id },
+    include: {
+      model: Card,
+      include: { model: User },
+    },
+  });
+  const allItems = JSON.parse(JSON.stringify(findItems))
+  res.render("Layout", { allItems });
 });
-renderRoutes.get('/private', (req, res) => {
-  res.render('Layout');
+
+renderRoutes.get("/private", (req, res) => {
+  res.render("Layout");
 });
 
 export default renderRoutes;
