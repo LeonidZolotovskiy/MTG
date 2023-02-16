@@ -9,6 +9,7 @@ export default function OneCartItem({ card, deleteHandler }) {
         flexDirection: "row",
       }}
     >
+      <img src="" alt="" />
       <button
         type="button"
         className="btn btn-danger"
