@@ -3,9 +3,10 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer>
+      <div>
         <div>
           <ul style={{
-            display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',
+            display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
           }}
           >
             <li className="m-2">
@@ -35,6 +36,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
     </footer>
   );
 }
