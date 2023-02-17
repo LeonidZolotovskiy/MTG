@@ -38,14 +38,29 @@ apiCard.route('/cart/:id')
   });
 
 apiCard.route('/cities')
-  .post(async (req, res) => {
+  .get(async (req, res) => {
     try {
       const cities = await User.findAll({
-        attributes: ['country'],
-        group: ['country'],
+        attributes: ['city'],
+        group: ['city'],
       });
-      const initState = { cities };
-      return res.send(initState);
+      // const initState = { cities };
+      return res.json(cities);
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(500);
+    }
+  });
+
+apiCard.route('/cities/:city')
+  .get(async (req, res) => {
+    try {
+      const cardsByCity = await Card.findAll({
+        where: { status: false },
+        include: [{ model: User, where: { city: req.params.city } }],
+      });
+      // const initState = { cities };
+      return res.json(cardsByCity);
     } catch (err) {
       console.log(err);
       return res.sendStatus(500);

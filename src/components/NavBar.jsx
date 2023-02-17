@@ -3,7 +3,6 @@ import useAppStore from '../store';
 
 export default function NavBar() {
   const user = useAppStore((state) => state.user);
-  console.log(user);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -15,36 +14,23 @@ export default function NavBar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             { user ? (
               <>
-
                 <li className="nav-item">
 
-                  <span className="nav-link">
-                    Здравствуйте!
-                    {' '}
+                  <a className="nav-link" href="/private">
+                    Здравствуйте,
                     {' '}
                     {user?.name}
-                    {' '}
-                    {' '}
-
-                  </span>
-
-                </li>
+                    !
+                  </a>
+                
+</li>
                 <li className="nav-item">
                   <a className="nav-link" href="/user/logout">Logout</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/cart">Cart</a>
                 </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="/">Action</a></li>
-                    <li><a className="dropdown-item" href="/">Another action</a></li>
-                    <li><a className="dropdown-item" href="/">Something else here</a></li>
-                  </ul>
-                </li>
+
               </>
             ) : (
               <>

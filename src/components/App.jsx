@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddCard from './card/AddCard';
 import AllCards from './AllCards';
@@ -11,12 +11,10 @@ import PrivateCabinet from './PrivateCabinet';
 import OneCard from './card/OneCard';
 
 export default function App(user) {
-  const [currentUser, setCurrentUser] = useState(user || null);
   return (
     <div>
-      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <NavBar />
       <Routes>
-        <Route path="/addcard" element={<AddCard />} />
         <Route path="/card" element={<OneCard />} />
         <Route path="/" element={<AllCards />} />
         <Route path="/signin" element={<SignIn />} />
