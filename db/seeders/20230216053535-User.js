@@ -8,7 +8,7 @@ module.exports = {
         {
           name: 'Vasya',
           password: await bcrypt.hash('123', 10),
-          email: '1@1',
+          email: 'a.i.kamenev90@icloud.com',
           city: 'Moscow',
           createdAt: new Date(),
           updatedAt: new Date(),
