@@ -5,12 +5,13 @@ import App from './App';
 
 export default function Layout({ initState }) {
   const {
-    setCard, setCards, setAllItems, setUser,
+    setCard, setCards, setAllItems, setUser, setCities,
   } = useAppStore();
   setCard(initState.card);
   setCards(initState.cards);
   setUser(initState.user);
   setAllItems(initState.allItems);
+  
   return (
     <html lang="en">
       <head>
