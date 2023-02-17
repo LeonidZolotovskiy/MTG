@@ -1,14 +1,8 @@
 import React from 'react';
 import useAppStore from '../store';
 
-export default function NavBar({ setSelect, select }) {
+export default function NavBar() {
   const user = useAppStore((state) => state.user);
-  const getCities = useAppStore((state) => state.getCities);
-  const city = useAppStore((state) => state.cities);
-
-  const selectHandler = (e) => {
-    setSelect(e.target.value);
-  };
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -36,12 +30,7 @@ export default function NavBar({ setSelect, select }) {
                 <li className="nav-item">
                   <a className="nav-link" href="/cart">Cart</a>
                 </li>
-                <li className="nav-item dropdown">
-                  <select onChange={selectHandler} onClick={() => getCities()}>
-                    <option value="">{select}</option>
-                    {city.map((card) => <option key={Math.random()}>{card?.city}</option>)}
-                  </select>
-                </li>
+
               </>
             ) : (
               <>
