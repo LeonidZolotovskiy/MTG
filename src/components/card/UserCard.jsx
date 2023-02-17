@@ -3,7 +3,7 @@ import OneCard from './OneCard';
 
 export default function UserCard({ cards }) {
   return (
-    <div className="row mt-2">
+    <div className="row m-0">
       {cards?.map((card) => <OneCard key={card.id} card={card} />)}
     </div>
   );

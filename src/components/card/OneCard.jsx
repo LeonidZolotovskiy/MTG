@@ -12,12 +12,12 @@ export default function OneCard({ card }) {
   };
   return (
 
-    <div className="card mb-2 col-3">
-      <div className="row g-0">
+    <div className="card col-3">
+      <div className="row g-1">
         <div className="col-md-4">
           <img src={card?.img} className="img-fluid rounded-start" alt={card?.name} />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-4">
           <div className="card-body">
             <h5 className="card-title">{card?.name}</h5>
             <p className="card-text">
