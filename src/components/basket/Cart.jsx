@@ -29,7 +29,7 @@ export default function Basket() {
       {/* button buy */}
       <button
         type="button"
-        className="btn btn-success"
+        className="btn btn-secondary"
         style={{ width: "20%" }}
         onClick={deleteBasket}
       >
