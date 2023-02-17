@@ -6,7 +6,7 @@ export default function AddCard() {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
+    // console.log(data);
     if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
       axios.post('/api/', data)
         .then((res) => {

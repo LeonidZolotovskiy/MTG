@@ -3,7 +3,7 @@ import useAppStore from '../store';
 
 export default function NavBar() {
   const user = useAppStore((state) => state.user);
-  console.log(user);
+  // console.log(user);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
