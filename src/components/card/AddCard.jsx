@@ -1,28 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import useAppStore from '../../store';
 
 export default function AddCard() {
+  const user = useAppStore((state) => state.user);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
-    // console.log(data);
+    data.owner_id = user.id;
     if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
-      axios.post('/api/', data)
-        .then((res) => {
-          setCurrentPosts((prev) => [...prev,
-            {
-              id: res.data.id,
-              name: data.name,
-              img: data.img,
-              user_id: res.data.user_id,
-              price: data.price,
-              condition: data.condition,
-              status: data.status,
-            },
-          ]);
-          e.target.reset();
-        });
+      axios.post('/api/', data).then(() => {
+        e.target.reset();
+      });
     }
   };
   return (
@@ -61,13 +52,14 @@ export default function AddCard() {
           </div>
         </fieldset>
         <fieldset>
+          <h6>Choose condition:</h6>
           <select
             className="form-select"
             name="condition"
             aria-label="Default select example"
+            required
           >
-            <option selected>Condition</option>
-            <option value="Good">Good</option>
+            <option value="Good" selected>Good</option>
             <option value="Average">Average</option>
             <option value="Bad">Bad</option>
           </select>

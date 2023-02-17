@@ -7,7 +7,7 @@ import apiUserRoutes from './routes/apiUserRoute';
 import jsxRender from './utils/jsxRender';
 import renderRoutes from './routes/renderRouter';
 import apiCard from './routes/apiCard';
-import cartRoute from './routes/cartRoute'
+import cartRoute from './routes/cartRoute';
 
 const PORT = process.env.SERVER_PORT || 3000;
 const app = express();

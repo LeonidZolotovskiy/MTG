@@ -1,5 +1,5 @@
 import express from 'express';
-import { Card, Basket } from '../../db/models';
+import { Card, Basket, User } from '../../db/models';
 
 const apiCard = express.Router();
 
@@ -7,16 +7,16 @@ apiCard.route('/')
   .post(async (req, res) => {
     console.log(req.body);
     const {
-      name, img, price, condition,
+      name, img, price, condition, owner_id,
     } = req.body;
-    if (!name && !img && !price && !condition) return res.sendStatus(401);
+    if (!name && !img && !price && !condition && !owner_id) return res.sendStatus(401);
     try {
       await Card.create({
         name,
         img,
         price,
         condition,
-        owner_id: 1,
+        owner_id,
       });
 
       return res.sendStatus(200);
@@ -31,6 +31,21 @@ apiCard.route('/cart/:id')
     try {
       await Basket.create({ u_id: res.locals.user.id, c_id: req.params.id });
       return res.sendStatus(200);
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(500);
+    }
+  });
+
+apiCard.route('/cities')
+  .post(async (req, res) => {
+    try {
+      const cities = await User.findAll({
+        attributes: ['country'],
+        group: ['country'],
+      });
+      const initState = { cities };
+      return res.send(initState);
     } catch (err) {
       console.log(err);
       return res.sendStatus(500);
