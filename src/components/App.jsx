@@ -18,10 +18,10 @@ export default function App(user) {
       <Routes>
         <Route path="/addcard" element={<AddCard />} />
         <Route path="/card" element={<OneCard />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<AllCards />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/allCards" element={<AllCards />} />
+        {/* <Route path="/allCards" element={<AllCards />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/private" element={<PrivateCabinet />} />
       </Routes>

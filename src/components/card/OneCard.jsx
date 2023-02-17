@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import useAppStore from '../../store';
 
 export default function OneCard({ card }) {
   const [change, setChange] = useState(card.inBasket);
+  const user = useAppStore((state) => state.user);
 
   const addToCartHandler = () => {
     setChange((prev) => !prev);
@@ -31,7 +33,13 @@ export default function OneCard({ card }) {
               {card?.condition}
               {' '}
             </p>
-            {!change ? (<button onClick={addToCartHandler} type="button" className="btn btn-primary">В корзину</button>) : (<p className="card-text">Добавлено в корзину</p>)}
+            {user ? (
+              <div>
+                {!change ? (<button onClick={addToCartHandler} type="button" className="btn btn-primary">В корзину</button>)
+                  : (<p className="card-text">Добавлено в корзину</p>)}
+
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
