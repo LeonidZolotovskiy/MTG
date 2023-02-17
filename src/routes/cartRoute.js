@@ -13,21 +13,26 @@ router.delete("/buy", async (req, res) => {
   });
   const allItems = JSON.parse(JSON.stringify(findItems));
   const allItemsMail = allItems.map((el) => el.Card.User.email).join(",");
-  console.log(allItemsMail);
+
+  await findItems.forEach((el) =>
+    Card.update({ status: true }, { where: { id: el.Card.id } })
+  );
+
   const message = {
     to: allItemsMail,
     subject: "вашу карточку хотят преобрести",
     html: `
-  <h2>зайдите на сайт для подтверждения</h2>
+       <h2>зайдите на сайт для подтверждения</h2>
   `,
   };
   mailer(message);
-  
+
+  await Basket.destroy({ where: { u_id: req.session.user.id } });
 
   res.sendStatus(200);
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const item = await Basket.findOne({
     where: {
       id: req.params.id,
