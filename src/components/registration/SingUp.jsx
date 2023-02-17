@@ -6,8 +6,8 @@ export default function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
-    const { password, name } = formData;
-    if (!(password && name)) {
+    const { password, name, city } = formData;
+    if (!(password && name && city)) {
       return setError({ message: 'Password and username must be non-empty' });
       console.log(err);
     }
