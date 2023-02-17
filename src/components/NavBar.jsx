@@ -22,16 +22,14 @@ export default function NavBar({ setSelect, select }) {
               <>
                 <li className="nav-item">
 
-                  <span className="nav-link">
-                    Здравствуйте!
-                    {' '}
+                  <a className="nav-link" href="/private">
+                    Здравствуйте,
                     {' '}
                     {user?.name}
-                    {' '}
-                    {' '}
-
-                  </span>
-                </li>
+                    !
+                  </a>
+                
+</li>
                 <li className="nav-item">
                   <a className="nav-link" href="/user/logout">Logout</a>
                 </li>
