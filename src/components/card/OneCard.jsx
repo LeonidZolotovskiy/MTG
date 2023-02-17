@@ -17,7 +17,7 @@ export default function OneCard({ card }) {
         <div className="col-md-4">
           <img src={card?.img} className="img-fluid rounded-start" alt={card?.name} />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-4">
           <div className="card-body">
             <h5 className="card-title">{card?.name}</h5>
             <p className="card-text">
