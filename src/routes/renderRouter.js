@@ -43,8 +43,9 @@ renderRoutes.get('/cart', async (req, res) => {
   res.render('Layout', { allItems });
 });
 
-renderRoutes.get('/private', (req, res) => {
-  res.render('Layout');
+renderRoutes.get('/private', async (req, res) => {
+  const cards = await Card.findAll({ where: { owner_id: req.session.user.id } });
+  res.render('Layout', { cards });
 });
 
 export default renderRoutes;

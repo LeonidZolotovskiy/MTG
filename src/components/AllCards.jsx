@@ -7,6 +7,7 @@ export default function AllCards() {
   const [search, setSearch] = useState('');
   const cards = AppStore((state) => state.cards);
   const [allCards, setAllCards] = useState(cards || []);
+  console.log(cards, allCards);
 
   const handlerFilter = () => {
     setAllCards((prev) => prev
