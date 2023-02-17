@@ -1,12 +1,10 @@
 import express from 'express';
+import { Op } from 'sequelize';
 import { Card, Basket, User } from '../../db/models';
 
 const renderRoutes = express.Router();
 
 renderRoutes.get('/signin', (req, res) => {
-  res.render('Layout');
-});
-renderRoutes.get('/addcard', (req, res) => {
   res.render('Layout');
 });
 
@@ -15,19 +13,28 @@ renderRoutes.get('/signup', (req, res) => {
 });
 
 renderRoutes.get('/', async (req, res) => {
-  const rowcards = await Card.findAll({ where: { status: false }, include: [{ model: User }] });
-  const cards = JSON.parse(JSON.stringify(rowcards));
+  let rowcards = [];
   if (req.session.user) {
+    rowcards = await Card.findAll({
+      where: { status: false, owner_id: { [Op.ne]: req.session.user.id } },
+      include: [{ model: User }],
+    });
+    console.log(rowcards)
     const rowbasketCards = await Basket.findAll(
       {
         where: { u_id: req.session.user.id },
       },
     );
     const basketCards = JSON.parse(JSON.stringify(rowbasketCards));
-    cards.forEach((card) => {
+    rowcards = JSON.parse(JSON.stringify(rowcards));
+    rowcards.forEach((card) => {
       card.inBasket = basketCards.some((el) => el.c_id === card.id);
     });
+  } else {
+    rowcards = await Card.findAll({ where: { status: false }, include: [{ model: User }] });
+    rowcards = JSON.parse(JSON.stringify(rowcards));
   }
+  const cards = rowcards;
   res.render('Layout', { cards });
 });
 
