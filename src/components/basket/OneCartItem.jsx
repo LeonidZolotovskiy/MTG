@@ -7,8 +7,8 @@ const ulStyle = {
   margin: "10px 20px",
   listStyleType: "none",
   padding: "0",
-  color: "black",
-  border: "3px solid white",
+  color: "white",
+  border: "1px solid MediumVioletRed",
 };
 
 export default function OneCartItem({ card, deleteHandler }) {
