@@ -15,7 +15,7 @@ export default function Search({ search, setSearch, handlerFilter }) {
       >
         <form className="d-flex" role="search">
           <input value={search} onChange={handlerSearch} className="form-control me-2" type="search" placeholder="фильтр по названию" aria-label="Search" />
-          <button onClick={() => { window.location = '/allCards'; }} className="btn btn-outline-success" type="button">Сброс</button>
+          <button onClick={() => { window.location = '/'; }} className="btn btn-outline-success" type="button">Сброс</button>
         </form>
       </div>
     </div>

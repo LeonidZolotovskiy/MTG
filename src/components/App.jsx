@@ -11,16 +11,9 @@ import PrivateCabinet from './PrivateCabinet';
 import OneCard from './card/OneCard';
 
 export default function App(user) {
-  const [currentUser, setCurrentUser] = useState(user || null);
-  const [select, setSelect] = useState('Выберите город');
   return (
     <div>
-      <NavBar
-      select={select}
-        setSelect={setSelect}
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-      />
+      <NavBar />
       <Routes>
         <Route path="/card" element={<OneCard />} />
         <Route path="/" element={<AllCards />} />

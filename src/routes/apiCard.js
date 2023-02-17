@@ -52,4 +52,19 @@ apiCard.route('/cities')
     }
   });
 
+apiCard.route('/cities/:city')
+  .get(async (req, res) => {
+    try {
+      const cardsByCity = await Card.findAll({
+        where: { status: false },
+        include: [{ model: User, where: { city: req.params.city } }],
+      });
+      // const initState = { cities };
+      return res.json(cardsByCity);
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(500);
+    }
+  });
+
 export default apiCard;
