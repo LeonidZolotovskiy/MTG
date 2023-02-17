@@ -4,14 +4,13 @@ import UserCard from './card/UserCard';
 import AppStore from '../store';
 
 export default function PrivateCabinet() {
-  const user = AppStore((state) => state.user);
   const cards = AppStore((state) => state.cards);
-  const userCards = cards.filter((el) => el.ownerId === user.id);
-  const [allCards, setAllCards] = useState(userCards || []);
+  console.log(cards);
+  // const [allCards, setAllCards] = useState(car || []);
   return (
     <div>
-      <AddCard setAllCards={setAllCards} />
-      <UserCard user={user} allCards={allCards} />
+      <AddCard />
+      <UserCard cards={cards} />
     </div>
   );
 }

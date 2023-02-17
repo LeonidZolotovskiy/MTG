@@ -48,6 +48,6 @@ app.use((req, res, next) => {
 app.use('/', renderRoutes);
 app.use('/user', apiUserRoutes);
 app.use('/api', apiCard);
-app.use('/api/cart', cartRoute)
+app.use('/api/cart', cartRoute);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

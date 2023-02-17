@@ -16,7 +16,6 @@ export default function App(user) {
     <div>
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-        <Route path="/addcard" element={<AddCard />} />
         <Route path="/card" element={<OneCard />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
