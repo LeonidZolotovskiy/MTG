@@ -20,9 +20,9 @@ router.delete("/buy", async (req, res) => {
 
   const message = {
     to: allItemsMail,
-    subject: "вашу карточку хотят преобрести",
+    subject: "вашу карточку хотят приобрести",
     html: `
-       <h2>зайдите на сайт для подтверждения</h2>
+       <h2>email для связи : ${req.session.user.email}</h2>
   `,
   };
   mailer(message);

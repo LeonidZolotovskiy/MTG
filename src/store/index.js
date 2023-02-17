@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { create } from 'zustand';
+import axios from "axios";
+import { create } from "zustand";
 
-const isWindow = () => global.toString() === '[object Window]';
+const isWindow = () => global.toString() === "[object Window]";
 
 const useAppStore = create((set, get) => ({
   user: isWindow() ? window.initState.user : undefined,
@@ -21,6 +21,7 @@ const useAppStore = create((set, get) => ({
     axios.delete("/api/cart/buy").then((res) => {
       if (res.status === 200) {
         set({ allItems: [] });
+        window.location.href = "/";
       }
     });
   },
@@ -32,12 +33,11 @@ const useAppStore = create((set, get) => ({
     });
   },
   getCities: async () => {
-    axios.get('/api/cities')
-      .then((res) => {
-        if (res.status === 200) {
-          set({ cities: res.data });
-        }
-      });
+    axios.get("/api/cities").then((res) => {
+      if (res.status === 200) {
+        set({ cities: res.data });
+      }
+    });
   },
 }));
 
