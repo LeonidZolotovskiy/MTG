@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddCard from './card/AddCard';
 import AllCards from './AllCards';

@@ -12,7 +12,7 @@ export default function AddCard() {
     data.owner_id = user.id;
     if (data.name.trim() && data.img.trim() && data.price.trim() && data.condition.trim()) {
       axios.post('/api/', data).then(() => {
-        e.target.reset();
+        window.location.href = '/private';
       });
     }
   };

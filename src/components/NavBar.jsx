@@ -18,15 +18,13 @@ export default function NavBar() {
 
                 <li className="nav-item">
 
-                  <span className="nav-link">
-                    Здравствуйте!
-                    {' '}
+                  <a className="nav-link" href="/private">
+                    Здравствуйте,
                     {' '}
                     {user?.name}
-                    {' '}
-                    {' '}
+                    !
 
-                  </span>
+                  </a>
 
                 </li>
                 <li className="nav-item">
