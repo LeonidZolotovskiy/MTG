@@ -1,7 +1,7 @@
 import React from 'react';
 import useAppStore from '../store';
 
-export default function NavBar({ setSelect,select }) {
+export default function NavBar({ setSelect, select }) {
   const user = useAppStore((state) => state.user);
   const getCities = useAppStore((state) => state.getCities);
   const city = useAppStore((state) => state.cities);

@@ -1,9 +1,9 @@
-import express from "express";
-import { Basket } from "../../db/models";
+import express from 'express';
+import { Basket } from '../../db/models';
 
 const router = express.Router();
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const item = await Basket.findOne({
     where: {
       id: req.params.id,
