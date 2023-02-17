@@ -1,3 +1,6 @@
+import {
+  FormControl, InputLabel, MenuItem, Select,
+} from '@mui/material';
 import axios from 'axios';
 import React from 'react';
 import useAppStore from '../store';
@@ -13,8 +16,13 @@ export default function SelectCity({ setSelect, select, setAllCards }) {
     });
   };
   return (
-    <div>
-      <select onChange={selectHandler} onClick={() => getCities()}>
+    <div style={{ marginRight: '30px', width: '20%' }}>
+      <select
+        className="form-select"
+        aria-label="Default select example"
+        onChange={() => selectHandler()}
+        onClick={() => getCities()}
+      >
         <option value={select}>{select}</option>
         {city.map((card) => <option key={Math.random()}>{card?.city}</option>)}
       </select>
