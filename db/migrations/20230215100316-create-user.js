@@ -23,6 +23,7 @@ module.exports = {
       },
       city: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

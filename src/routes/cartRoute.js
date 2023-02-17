@@ -27,7 +27,7 @@ router.delete("/buy", async (req, res) => {
   res.sendStatus(200);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const item = await Basket.findOne({
     where: {
       id: req.params.id,

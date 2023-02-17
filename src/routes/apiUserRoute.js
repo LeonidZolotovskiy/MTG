@@ -55,6 +55,6 @@ apiUserRoutes.post('/login', async (req, res) => {
 apiUserRoutes.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('userId');
-  res.sendStatus(200);
+  res.redirect('/');
 });
 export default apiUserRoutes;

@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     password: DataTypes.TEXT,
     email: DataTypes.STRING,
+    city: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',

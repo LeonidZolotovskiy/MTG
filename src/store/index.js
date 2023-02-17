@@ -12,6 +12,7 @@ const useAppStore = create((set, get) => ({
 
   setCards: (cards) => set({ cards }),
   setCard: (card) => set({ card }),
+  setUser: (user) => set({ user }),
   setAllItems: (allItems) => set({ allItems }),
 
   deleteItems: async (id) => {
