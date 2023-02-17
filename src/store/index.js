@@ -17,6 +17,13 @@ const useAppStore = create((set, get) => ({
   setAllItems: (allItems) => set({ allItems }),
   setCities: (cities) => set({ cities }),
 
+  deleteBasket: async () => {
+    axios.delete("/api/cart/buy").then((res) => {
+      if (res.status === 200) {
+        set({ allItems: [] });
+      }
+    });
+  },
   deleteItems: async (id) => {
     axios.delete(`/api/cart/${id}`).then((res) => {
       if (res.status === 200) {
