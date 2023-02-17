@@ -11,7 +11,7 @@ export default function Layout({ initState }) {
   setCards(initState.cards);
   setUser(initState.user);
   setAllItems(initState.allItems);
-  
+
   return (
     <html lang="en">
       <head>
@@ -38,6 +38,8 @@ export default function Layout({ initState }) {
         />
         <script defer src="/app.js" />
         <script defer src="/vendor.js" />
+
+        <link rel="icon" href="/public/icon/magic.png" sizes="any" />
         <link href="/css/addCard.css" rel="stylesheet" media="all" />
         <title>Document</title>
       </head>
