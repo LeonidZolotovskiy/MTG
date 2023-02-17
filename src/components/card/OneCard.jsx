@@ -12,8 +12,8 @@ export default function OneCard({ card }) {
   };
   return (
 
-    <div className="card col-3">
-      <div className="row g-1">
+    <div className="card mb-2 col-4">
+      <div className="row g-0">
         <div className="col-md-4">
           <img src={card?.img} className="img-fluid rounded-start" alt={card?.name} />
         </div>
@@ -41,7 +41,7 @@ export default function OneCard({ card }) {
             </p>
             {user && user?.id !== card?.owner_id ? (
               <div>
-                {!change ? (<button onClick={addToCartHandler} type="button" className="btn btn-primary">В корзину</button>)
+                {!change ? (<button onClick={addToCartHandler} type="button" className="btn btn-secondary">В корзину</button>)
                   : (<p className="card-text">Добавлено в корзину</p>)}
 
               </div>
