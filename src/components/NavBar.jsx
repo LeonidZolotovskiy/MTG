@@ -22,8 +22,8 @@ export default function NavBar() {
                     {user?.name}
                     !
                   </a>
-                
-</li>
+
+                </li>
                 <li className="nav-item">
                   <a className="nav-link" href="/user/logout">Logout</a>
                 </li>
