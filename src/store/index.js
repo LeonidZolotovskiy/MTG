@@ -21,6 +21,13 @@ const useAppStore = create((set, get) => ({
       }
     });
   },
+  deleteBasket: async () => {
+    axios.delete("/api/cart/buy").then((res) => {
+      if (res.status === 200) {
+        set({ allItems: [] });
+      }
+    });
+  },
 }));
 
 export default useAppStore;
