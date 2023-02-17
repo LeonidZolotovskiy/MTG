@@ -9,6 +9,7 @@ import SignIn from './registration/SingIn';
 import SignUp from './registration/SingUp';
 import PrivateCabinet from './PrivateCabinet';
 import OneCard from './card/OneCard';
+import Footer from './Footer';
 
 export default function App(user) {
   return (
@@ -23,6 +24,7 @@ export default function App(user) {
         <Route path="/cart" element={<Cart />} />
         <Route path="/private" element={<PrivateCabinet />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

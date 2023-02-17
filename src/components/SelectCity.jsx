@@ -15,9 +15,10 @@ export default function SelectCity({ setSelect, select, setAllCards }) {
   return (
     <div style={{ marginRight: '30px', width: '20%' }}>
       <select
+        value={select}
         className="form-select"
         aria-label="Default select example"
-        onChange={() => selectHandler()}
+        onChange={selectHandler}
         onClick={() => getCities()}
       >
         <option value={select}>{select}</option>
