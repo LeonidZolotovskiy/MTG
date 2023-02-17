@@ -1,27 +1,26 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport(
   {
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    host: "smtp.mail.ru",
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
-      user: 'myrtice.collier97@ethereal.email',
-      pass: 'bAyQb4RFhDSGGRHeMw',
+      // Пожалуйста, используйте свой собственный аккаунт для рассылки
+      user: "ttarasovuch@mail.ru", // (замените звездочики на название вашего почтового ящика)
+      // pass: "tfrenckiedgar", //  (замените звездочики на пароль вашего почтового ящика)
+      pass:'ZrddMuhbHYcGjaTEphac'
     },
   },
   {
-    from: 'Myrtice Collier <myrtice.collier97@ethereal.email>',
-  },
+    from: "<ttarasovuch@mail.ru>",
+  }
 );
 
 const mailer = (message) => {
-  transporter.sendMail(message, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(`Email sent:${info.response}`);
-    }
+  transporter.sendMail(message, (err, info) => {
+    if (err) return console.log(err);
+    console.log("Email sent: ", info);
   });
 };
 

@@ -33,7 +33,13 @@ export default function OneCard({ card }) {
               {card?.condition}
               {' '}
             </p>
-            {user ? (
+            <p className="card-text">
+              City:
+              {' '}
+              {card?.User.city}
+              {' '}
+            </p>
+            {user && user?.id !== card?.owner_id ? (
               <div>
                 {!change ? (<button onClick={addToCartHandler} type="button" className="btn btn-secondary">В корзину</button>)
                   : (<p className="card-text">Добавлено в корзину</p>)}

@@ -6,6 +6,7 @@ import AppStore from "../../store";
 export default function Basket() {
   const allItems = AppStore((state) => state.allItems);
   const deleteHandler = AppStore((state) => state.deleteItems);
+  const deleteBasket = AppStore((state)=> state.deleteBasket)
 
   return (
     <div
@@ -30,6 +31,7 @@ export default function Basket() {
         type="button"
         className="btn btn-success"
         style={{ width: "20%" }}
+        onClick={deleteBasket}
       >
         buy
       </button>

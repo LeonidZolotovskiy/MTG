@@ -15,7 +15,7 @@ renderRoutes.get('/signup', (req, res) => {
 });
 
 renderRoutes.get('/', async (req, res) => {
-  const rowcards = await Card.findAll({ where: { status: false } });
+  const rowcards = await Card.findAll({ where: { status: false }, include: [{ model: User }] });
   const cards = JSON.parse(JSON.stringify(rowcards));
   if (req.session.user) {
     const rowbasketCards = await Basket.findAll(
